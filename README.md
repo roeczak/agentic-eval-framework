@@ -241,7 +241,7 @@ The framework is model-agnostic. Any model accessible via vLLM or HuggingFace Tr
 ## Installation
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/agentic-eval-framework.git
+git clone https://github.com/roeczak/agentic-eval-framework.git
 cd agentic-eval-framework
 pip install -r requirements.txt
 ```
@@ -308,8 +308,8 @@ python scripts/run_single_task.py \
 
 This framework was developed as part of the **AIXPERT** project (Horizon Europe, ID 101214389) at the University of Groningen. The industrial co-creation study was conducted with a manufacturing partner operating complex SOP/SMP-governed production lines.
 
-The conference paper precursor to this work was presented at IFAC 2025:
-> Koukas, A., Raza, S., Maruster, L., Emmanouilidis, C. (2025). *An Evaluation Framework for Agentic AI in Manufacturing Standard Operating and Maintenance Procedures.*
+The conference paper precursor to this work was presented at IFAC 2026 World Congress:
+> Koukas, A., Raza, S., Maruster, L., Emmanouilidis, C. (2026). * An Evaluation Framework for Agentic AI in Manufacturing Standard Operating and Maintenance Procedures*
 
 ---
 
@@ -318,11 +318,11 @@ The conference paper precursor to this work was presented at IFAC 2025:
 If you use this framework in your research, please cite:
 
 ```bibtex
-@article{koukas2025agentic,
+@article{koukas2026agentic,
   title={Agentic AI in Industrial Procedural Control: A Multi-Dimensional Evaluation Framework},
   author={Koukas, Anastasios and Raza, Shaina and Maruster, Laura and Emmanouilidis, Christos},
   journal={Annual Reviews in Control},
-  year={2025},
+  year={2026},
   note={Under review}
 }
 ```
