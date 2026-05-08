@@ -1,0 +1,27 @@
+# Task 1: Error Identification and Classification
+# Perception stage of the agentic cycle
+#
+# The agent receives a symptom description and the full diagnostic
+# procedure graph. It must classify the error and identify the
+# correct entry point in the procedure.
+
+task_id: task1
+task_name: "Error Identification and Classification"
+cycle_stage: "Perception"
+
+output_schema:
+  error_category: "short label describing the fault type"
+  entry_decision_node: "node ID of the first relevant decision point (e.g. box_1)"
+  entry_decision_text: "the question text of that decision node"
+  initial_decision: "Yes or No"
+  reasoning: "one sentence explaining the classification"
+
+scoring_weights:
+  error_classification: 0.35
+  branch_mapping: 0.40
+  initial_decision: 0.25
+
+notes: >
+  The entry_decision_node is the most discriminating sub-score.
+  A correct node ID with wrong Yes/No is still informative —
+  the agent understood the structure but misread the symptom.
