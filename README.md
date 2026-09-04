@@ -1,4 +1,4 @@
-# Agentic AI Evaluation Framework for Manufacturing SOPs and SMPs
+# An Evaluation Framework for Agentic AI Automation in Industrial Procedural Control
 
 A multi-dimensional evaluation framework for assessing LLM-based agentic AI systems in industrial procedural control environments governed by Standard Operating Procedures (SOPs) and Standard Maintenance Procedures (SMPs).
 
