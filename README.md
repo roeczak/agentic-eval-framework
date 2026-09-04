@@ -5,7 +5,7 @@ A multi-dimensional evaluation framework for assessing LLM-based agentic AI syst
 This repository accompanies the journal paper:
 
 > **Agentic AI in Industrial Procedural Control: A Multi-Dimensional Evaluation Framework**
-> Anastasios Koukas, Shaina Raza, Laura Maruster, Christos Emmanouilidis
+> Anastasios Koukas, Laura Maruster, Christos Emmanouilidis
 > *Annual Reviews in Control* (under review)
 
 ---
