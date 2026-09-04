@@ -1,0 +1,184 @@
+TASK 3 — Role-Based Reasoning and Escalation
+Graph: GRAPH06 | Case type: escalation | Scenario: GRAPH06_t3_002
+============================================================
+
+You are an industrial AI assistant supporting operators and technicians
+in a manufacturing environment. You help diagnose equipment errors,
+navigate standard operating procedures (SOPs) and standard maintenance
+procedures (SMPs), and determine appropriate escalation actions based
+on role hierarchies.
+
+You will be given a diagnostic procedure represented as a graph with
+the following node types:
+  - terminator : start or end/resolution point
+  - decision   : a Yes/No question that determines the next step
+  - process    : an action or diagnostic step to perform
+  - document   : a reference to a sub-procedure
+
+Always respond in valid JSON matching the output template provided.
+Do not include any text outside the JSON object.
+
+
+---
+
+ROLE HIERARCHY:
+Manufacturing Role Hierarchy:
+
+  Level 1 — Operator: Sets up and operates machinery under prescribed instructions and supervision. Handles routine operational tasks only. (escalates to Level 2)
+  Level 2 — Technical Operator: Performs setup and operation but may also carry out minor technical interventions following defined procedures. (escalates to Level 3)
+  Level 3 — Mechanic: Maintains, adjusts, and diagnoses machine issues with limited supervision. Reports to a manufacturing leader upon encountering disruptions beyond their scope. (escalates to Level 4)
+  Level 4 — Maintenance Engineer: Handles structural improvements, inspection, and advanced diagnostics. This is the final escalation point — the agent defers to human expertise at this level. (final escalation point)
+
+---
+
+DIAGNOSTIC PROCEDURE:
+{
+  "id": "GRAPH06",
+  "description": "Troubleshooting procedure for diagnosing the detection of an incorrect marking pattern on assembled parts.",
+  "nodes": {
+    "box_0": {
+      "type": "terminator",
+      "text": "Start"
+    },
+    "box_1": {
+      "type": "decision",
+      "text": "Were the parts with the wrong marking pattern made during regular production?"
+    },
+    "box_2": {
+      "type": "process",
+      "text": "Read out the part ID code of the relevant parts."
+    },
+    "box_3": {
+      "type": "terminator",
+      "text": "Notify the quality assurance team and remove all parts with the wrong marking pattern if necessary."
+    },
+    "box_4": {
+      "type": "decision",
+      "text": "Is the vision inspection system on?"
+    },
+    "box_5": {
+      "type": "process",
+      "text": "Check in the deselection menu on the operator control interface whether the vision inspection system is still enabled."
+    },
+    "box_6": {
+      "type": "process",
+      "text": "Turn on vision inspection system."
+    },
+    "box_7": {
+      "type": "decision",
+      "text": "Is the vision inspection system still properly set?"
+    },
+    "box_8": {
+      "type": "process",
+      "text": "Have maintenance team check the vision inspection system for pattern recognition"
+    },
+    "box_9": {
+      "type": "terminator",
+      "text": "Have maintenance team retrain the inspection model."
+    },
+    "box_10": {
+      "type": "terminator",
+      "text": "Notify quality assurance team and engineering team"
+    },
+    "box_11": {
+      "type": "process",
+      "text": "Proceed with the non conformance notification procedure."
+    }
+  },
+  "edges": [
+    {
+      "source": "box_0",
+      "target": "box_1",
+      "label": null
+    },
+    {
+      "source": "box_2",
+      "target": "box_1",
+      "label": null
+    },
+    {
+      "source": "box_1",
+      "target": "box_4",
+      "label": "Yes"
+    },
+    {
+      "source": "box_1",
+      "target": "box_3",
+      "label": "No"
+    },
+    {
+      "source": "box_5",
+      "target": "box_4",
+      "label": null
+    },
+    {
+      "source": "box_4",
+      "target": "box_7",
+      "label": "Yes"
+    },
+    {
+      "source": "box_4",
+      "target": "box_6",
+      "label": "No"
+    },
+    {
+      "source": "box_8",
+      "target": "box_7",
+      "label": null
+    },
+    {
+      "source": "box_7",
+      "target": "box_9",
+      "label": "No"
+    },
+    {
+      "source": "box_7",
+      "target": "box_11",
+      "label": "Yes"
+    },
+    {
+      "source": "box_11",
+      "target": "box_10",
+      "label": null
+    },
+    {
+      "source": "box_6",
+      "target": "box_4",
+      "label": null
+    }
+  ]
+}
+
+---
+
+SITUATION:
+During operation involving 'Troubleshooting procedure for diagnosing the detection of an incorrect marking pattern on assembled parts.', the following situation was reached: Have maintenance team retrain the inspection model.
+
+Current resolution point reached:
+"Have maintenance team retrain the inspection model."
+
+The worker reporting this situation is:
+  Role: Technical Operator (Level 2)
+
+---
+
+TASK:
+Based on the situation and the role hierarchy:
+
+1. Determine whether the current worker role (Technical Operator, Level 2)
+   is authorised to handle this resolution.
+2. If not, identify the correct role to escalate to.
+3. If the situation exceeds all operator-level competence, flag it as out of scope
+   and escalate to the Maintenance Engineer (Level 4).
+
+Respond ONLY with a valid JSON object matching this exact template:
+
+{
+  "escalation_needed": <true or false>,
+  "required_role_level": <integer 1-4>,
+  "required_role_name": "<role name>",
+  "escalation_target_level": <integer 1-4 or null if no escalation>,
+  "escalation_target_name": "<role name or null if no escalation>",
+  "out_of_scope": <true if Maintenance Engineer required, false otherwise>,
+  "reasoning": "<one sentence justifying the escalation decision>"
+}

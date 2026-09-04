@@ -1,0 +1,23 @@
+{
+  "model_id": "llama3.1-8b",
+  "pipeline": {
+    "mean_task1": 0.5643,
+    "n_task1": 1237,
+    "mean_task2": 0.999,
+    "n_task2": 1237,
+    "mean_task3": 0.5547,
+    "n_task3": 1237,
+    "mean_task4": 0.0778,
+    "n_task4": 1237,
+    "mean_task5": 0.5116,
+    "n_task5": 1237,
+    "mean_t1_t4_divergence": 0.4957,
+    "mean_task1_short_tree": 0.8,
+    "n_short_tree": 5,
+    "mean_task1_medium_chain": 0.415,
+    "n_medium_chain": 359,
+    "mean_task1_deep_ladder": 0.6243,
+    "n_deep_ladder": 873,
+    "n_pipeline_runs": 1237
+  }
+}

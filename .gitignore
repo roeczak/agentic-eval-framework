@@ -1,0 +1,22 @@
+# Job scripts
+jobs/
+
+# Logs
+logs/
+
+# Raw results (too large)
+results/raw/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# HuggingFace cache
+.cache/
+
+# Sensitive
+*.sh
+hf_token
+*.token

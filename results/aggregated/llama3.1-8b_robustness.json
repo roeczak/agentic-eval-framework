@@ -1,0 +1,15 @@
+{
+  "model_id": "llama3.1-8b",
+  "robustness_index": 86.44,
+  "per_task": {
+    "task1": {
+      "ratio": 1.0
+    },
+    "task2": {
+      "ratio": 1.0
+    },
+    "task3": {
+      "ratio": 0.5933
+    }
+  }
+}

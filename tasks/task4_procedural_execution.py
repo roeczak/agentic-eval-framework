@@ -403,7 +403,8 @@ Respond ONLY with:
 
             # Advance graph state based on node type and agent response
             if node.is_decision():
-                decision = parsed_response.get("decision", "").strip().capitalize()
+                raw_decision = parsed_response.get("decision", "").strip()
+                decision = raw_decision.capitalize().rstrip(".")
                 if decision not in ("Yes", "No"):
                     state.lost = True
                     state.history.append(turn_log)

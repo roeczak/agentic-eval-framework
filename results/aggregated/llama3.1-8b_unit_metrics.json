@@ -1,0 +1,14 @@
+{
+  "model_id": "llama3.1-8b",
+  "metrics": {
+    "error_identification_accuracy": 0.0,
+    "interaction_efficiency": 0.0,
+    "escalation_appropriateness": 0.0,
+    "procedural_accuracy": 3.88,
+    "hallucination_rate": 0.06,
+    "trace_completeness": 37.85,
+    "general_consistency": 0.0,
+    "cross_lingual_consistency": 0.0,
+    "robustness_index": 0.0
+  }
+}

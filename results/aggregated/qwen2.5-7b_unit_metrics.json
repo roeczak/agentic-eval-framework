@@ -1,0 +1,14 @@
+{
+  "model_id": "qwen2.5-7b",
+  "metrics": {
+    "error_identification_accuracy": 0.0,
+    "interaction_efficiency": 0.0,
+    "escalation_appropriateness": 0.0,
+    "procedural_accuracy": 18.81,
+    "hallucination_rate": 0.0,
+    "trace_completeness": 27.9,
+    "general_consistency": 0.0,
+    "cross_lingual_consistency": 0.0,
+    "robustness_index": 0.0
+  }
+}

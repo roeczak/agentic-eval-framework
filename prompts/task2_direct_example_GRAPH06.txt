@@ -1,0 +1,165 @@
+TASK 2 — Instruction Retrieval and Clarification
+Graph: GRAPH06 | Type: direct | Scenario: GRAPH06_t2_004
+============================================================
+
+You are an industrial AI assistant supporting operators and technicians
+in a manufacturing environment. You help diagnose equipment errors,
+navigate standard operating procedures (SOPs) and standard maintenance
+procedures (SMPs), and determine appropriate escalation actions based
+on role hierarchies.
+
+You will be given a diagnostic procedure represented as a graph with
+the following node types:
+  - terminator : start or end/resolution point
+  - decision   : a Yes/No question that determines the next step
+  - process    : an action or diagnostic step to perform
+  - document   : a reference to a sub-procedure
+
+Always respond in valid JSON matching the output template provided.
+Do not include any text outside the JSON object.
+
+
+---
+
+You are assisting a worker in a manufacturing environment with a procedural query.
+
+DIAGNOSTIC PROCEDURE:
+{
+  "id": "GRAPH06",
+  "description": "Troubleshooting procedure for diagnosing the detection of an incorrect marking pattern on assembled parts.",
+  "nodes": {
+    "box_0": {
+      "type": "terminator",
+      "text": "Start"
+    },
+    "box_1": {
+      "type": "decision",
+      "text": "Were the parts with the wrong marking pattern made during regular production?"
+    },
+    "box_2": {
+      "type": "process",
+      "text": "Read out the part ID code of the relevant parts."
+    },
+    "box_3": {
+      "type": "terminator",
+      "text": "Notify the quality assurance team and remove all parts with the wrong marking pattern if necessary."
+    },
+    "box_4": {
+      "type": "decision",
+      "text": "Is the vision inspection system on?"
+    },
+    "box_5": {
+      "type": "process",
+      "text": "Check in the deselection menu on the operator control interface whether the vision inspection system is still enabled."
+    },
+    "box_6": {
+      "type": "process",
+      "text": "Turn on vision inspection system."
+    },
+    "box_7": {
+      "type": "decision",
+      "text": "Is the vision inspection system still properly set?"
+    },
+    "box_8": {
+      "type": "process",
+      "text": "Have maintenance team check the vision inspection system for pattern recognition"
+    },
+    "box_9": {
+      "type": "terminator",
+      "text": "Have maintenance team retrain the inspection model."
+    },
+    "box_10": {
+      "type": "terminator",
+      "text": "Notify quality assurance team and engineering team"
+    },
+    "box_11": {
+      "type": "process",
+      "text": "Proceed with the non conformance notification procedure."
+    }
+  },
+  "edges": [
+    {
+      "source": "box_0",
+      "target": "box_1",
+      "label": null
+    },
+    {
+      "source": "box_2",
+      "target": "box_1",
+      "label": null
+    },
+    {
+      "source": "box_1",
+      "target": "box_4",
+      "label": "Yes"
+    },
+    {
+      "source": "box_1",
+      "target": "box_3",
+      "label": "No"
+    },
+    {
+      "source": "box_5",
+      "target": "box_4",
+      "label": null
+    },
+    {
+      "source": "box_4",
+      "target": "box_7",
+      "label": "Yes"
+    },
+    {
+      "source": "box_4",
+      "target": "box_6",
+      "label": "No"
+    },
+    {
+      "source": "box_8",
+      "target": "box_7",
+      "label": null
+    },
+    {
+      "source": "box_7",
+      "target": "box_9",
+      "label": "No"
+    },
+    {
+      "source": "box_7",
+      "target": "box_11",
+      "label": "Yes"
+    },
+    {
+      "source": "box_11",
+      "target": "box_10",
+      "label": null
+    },
+    {
+      "source": "box_6",
+      "target": "box_4",
+      "label": null
+    }
+  ]
+}
+
+---
+
+USER QUERY:
+What should I do to: Proceed with the non conformance notification procedure.? Please provide the specific steps from the procedure.
+
+---
+
+TASK:
+Retrieve the specific instruction from the procedure that directly answers the user query.
+
+Respond ONLY with a valid JSON object matching this exact template:
+
+{
+  "retrieved_node_id": "<node ID of the most relevant node, e.g. box_3>",
+  "retrieved_node_type": "<terminator | decision | process | document>",
+  "instruction_text": "<the exact text of the retrieved node>",
+  "requires_subdoc": <true if a sub-procedure must be consulted, false otherwise>,
+  "subdoc_reference": "<name/text of the sub-procedure if requires_subdoc is true, else null>",
+  "clarification_needed": <true if you need more information, false otherwise>,
+  "clarification_question": "<your clarification question if needed, else null>",
+  "reasoning": "<one sentence explaining your retrieval decision>"
+}

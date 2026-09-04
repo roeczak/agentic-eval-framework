@@ -1,0 +1,23 @@
+{
+  "model_id": "qwen2.5-7b",
+  "pipeline": {
+    "mean_task1": 0.8266,
+    "n_task1": 1237,
+    "mean_task2": 0.999,
+    "n_task2": 1237,
+    "mean_task3": 0.5074,
+    "n_task3": 1237,
+    "mean_task4": 0.1599,
+    "n_task4": 1237,
+    "mean_task5": 0.39,
+    "n_task5": 1237,
+    "mean_t1_t4_divergence": 0.6704,
+    "mean_task1_short_tree": 0.7,
+    "n_short_tree": 5,
+    "mean_task1_medium_chain": 0.5933,
+    "n_medium_chain": 359,
+    "mean_task1_deep_ladder": 0.9233,
+    "n_deep_ladder": 873,
+    "n_pipeline_runs": 1237
+  }
+}

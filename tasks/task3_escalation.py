@@ -346,7 +346,9 @@ Respond ONLY with a valid JSON object matching this exact template:
         else:
             # Not an out-of-scope case — penalise false positives
             oos_score = 1.0 if not pred_oos else 0.0
-
+        # Correct logical inconsistency: out_of_scope implies escalation_needed
+        if parsed.get("out_of_scope") and not parsed.get("escalation_needed"):
+            parsed["escalation_needed"] = True
         # 4. Composite
         composite = (
             self.WEIGHTS["escalation_decision"] * esc_correct

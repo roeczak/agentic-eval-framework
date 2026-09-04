@@ -1,0 +1,53 @@
+{
+  "model_id": "llama3.1-8b",
+  "tasks": {
+    "task1": {
+      "overall": {
+        "n": 1237,
+        "branch_mapping_score": 0.8003,
+        "initial_decision_score": 0.2239,
+        "error_classification_score": 0.0,
+        "hallucination_flag": 0.0,
+        "parse_success": 1.0
+      },
+      "by_complexity": {
+        "short_tree": {
+          "n": 5,
+          "branch_mapping_score": 1.0,
+          "initial_decision_score": 0.2,
+          "error_classification_score": 0.0,
+          "hallucination_flag": 0.0,
+          "parse_success": 1.0
+        },
+        "medium_chain": {
+          "n": 359,
+          "branch_mapping_score": 0.312,
+          "initial_decision_score": 0.1894,
+          "error_classification_score": 0.0,
+          "hallucination_flag": 0.0,
+          "parse_success": 1.0
+        },
+        "deep_ladder": {
+          "n": 873,
+          "branch_mapping_score": 1.0,
+          "initial_decision_score": 0.2383,
+          "error_classification_score": 0.0,
+          "hallucination_flag": 0.0,
+          "parse_success": 1.0
+        }
+      },
+      "by_type": {}
+    }
+  },
+  "framework_metrics": {
+    "error_identification_accuracy": 80.03,
+    "interaction_efficiency": 0.0,
+    "escalation_appropriateness": 0.0,
+    "procedural_accuracy": 0.0,
+    "hallucination_rate": 0.0,
+    "trace_completeness": 0.0,
+    "general_consistency": 0.0,
+    "cross_lingual_consistency": 0.0,
+    "robustness_index": 0.0
+  }
+}
